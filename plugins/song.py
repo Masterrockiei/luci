@@ -10,8 +10,7 @@ from pyrogram import Client, filters
 from pyrogram.errors import FloodWait, MessageNotModified
 from pyrogram.types import Message
 from youtubesearchpython import SearchVideos
-from yt_dlp import YoutubeDL
-import youtube_dl
+import yt_dlp
 from youtube_search import YoutubeSearch
 import requests
 
@@ -71,7 +70,7 @@ def a(client, message):
         return
     m.edit("⬆️ Uploading.")
     try:
-        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
