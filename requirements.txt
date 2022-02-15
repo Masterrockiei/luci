@@ -15,3 +15,4 @@ yt_dlp
 aiohttp
 requests
 bs4
+ffmpeg
