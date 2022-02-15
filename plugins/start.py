@@ -12,7 +12,7 @@ async def start(bot, message):
     text=f"Hey {message.from_user.mention} ✨,\n\nI am an **advanced** music bot made for **Kerala Music Hub**",
     reply_markup=InlineKeyboardMarkup(
       [[
-        InlineKeyboardButton("🍂 Group", url="https://t.me/KeralaMuiscHubRedirect"),
+        InlineKeyboardButton("🍂 Group", url="https://t.me/KeralaMusicHubRedirect"),
         InlineKeyboardButton("🗑️ Close", callback_data="close")
       ]]
     )
