@@ -3,7 +3,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 
 
-@Client.on_message(filters.command("start", "find"))
+@Client.on_message(filters.command("start"))
 async def start(bot, message):
   m=await message.reply_text("◈◇◇")
   n=await m.edit("◈◈◇")
