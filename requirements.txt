@@ -1,0 +1,17 @@
+Pyrogram==1.2.11
+pymongo[srv]==3.11.4
+motor==2.4.0
+TgCrypto==1.2.2
+wheel
+psutil
+tgintegration
+youtube-dl
+youtube_search
+requests
+aiofiles
+wget
+youtube-search-python==1.4.6
+yt_dlp
+aiohttp
+requests
+bs4
