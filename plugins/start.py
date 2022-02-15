@@ -9,7 +9,7 @@ async def start(bot, message):
   n=await m.edit("◈◈◇")
   p=await n.edit("◈◈◈")
   await p.edit(
-    text=f"Hey {message.from_user.mention} ✨,\n\n I am an advanced music bot made for **Kerala Music Hub**"
+    text=f"Hey {message.from_user.mention} ✨,\n\n I am an advanced music bot made for **Kerala Music Hub**",
     reply_markup=InlineKeyboardMarkup(
       [[
         InlineKeyboardButton("🍂 Group", url="https://t.me/KeralaMuiscHubRedirect"),
