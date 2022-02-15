@@ -20,4 +20,4 @@ async def start(bot, message):
   
 @Client.on_callback_query(filters.regex("close"))
 async def close(bot, message):
-  await message.delete()
+  await query.message.delete()
