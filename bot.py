@@ -9,10 +9,5 @@ Client = Client(
   plugins=dict(root="plugins")
 )
 
-Client.start()
-print("Bot has started")
-
-Client.stop()
-print("Bot has stopped")
-
 Client.run()
+print("Bot has been started")
