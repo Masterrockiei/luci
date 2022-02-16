@@ -27,7 +27,7 @@ def time_to_seconds(time):
 ## Commands --------------------------------
 
 
-@Client.on_message(filters.command(["song"]) & ~filters.channel & ~filters.edited & filters.chat(Config.GROUP_ID))
+@Client.on_message(filters.command(["song"]) & ~filters.channel & ~filters.edited & filters.chat(Config.GROUP_ID) & filters.private)
 def a(client, message):
     query = ''
     for i in message.command[1:]:
@@ -36,12 +36,9 @@ def a(client, message):
     m = message.reply("⬆️ Processing")
     ydl_opts = {
         "format": "bestaudio",
-        "addmetadata": True,
         "key": "FFmpegMetadata",
-        "writethumbnail": True,
         "prefer_ffmpeg": True,
         "geo_bypass": True,
-        'noplaylist': True,
         "nocheckcertificate": True,
         "postprocessors": [
             {
@@ -51,8 +48,6 @@ def a(client, message):
             }
         ],
         "outtmpl": "downloads/%(id)s.mp3",
-        "quiet": True,
-        "logtostderr": False,
     }
     try:
         results = []
