@@ -17,6 +17,7 @@ TIME_DURATION_UNITS = (
 
 @Client.on_message(filters.command(["start", "find"]) & filters.chat(Config.GROUP_ID) | filters.private)
 async def start(bot, message):
+  current_time = datetime.utcnow()
   uptime_sec = (current_time - START_TIME).total_seconds()
   uptime = _human_time_duration(int(uptime_sec))
   m=await message.reply_text("◈◇◇")
