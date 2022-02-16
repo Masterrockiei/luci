@@ -41,7 +41,7 @@ async def shazamm(client, message):
     image = nt.get("coverarthq")
     by = zzz.get("subtitle")
     title = zzz.get("title")
-    messageo = f"""<b><u>Song Shazamed !!</u></b>
+    messageo = f"""<b><u>Song Shazamed !!</u></b>\n
 <b>🎵 Song Name : </b>{title}\n
 <b>🎼 Song By : </b>{by}\n
 <b>✨ Identified using Riya Music Bot ~ @RiyaMusicBot</b>
