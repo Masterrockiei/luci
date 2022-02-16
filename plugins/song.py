@@ -73,7 +73,7 @@ def a(client, message):
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
-            audio_file = ydl.prepare_filename(info_dict)
+            audio_file = ydl.prepare_filename(info_dict) 
             ydl.process_info(info_dict)
         rep = f"♬ <b>Title : {title}</b>\n♬ <b>Duration : {duration}</b>\n♬ <b>Requested By : {message.from_user.mention}</b>"
         secmul, dur, dur_arr = 1, 0, duration.split(':')
@@ -81,8 +81,6 @@ def a(client, message):
             dur += (int(dur_arr[i]) * secmul)
             secmul *= 60
         message.reply_audio(audio_file, caption=rep, parse_mode='HTML',quote=False, title=title, duration=dur, performer=performer, thumb=thumb_name)
-        m.delete()
-        message.delete()
     except Exception as e:
         m.edit('There is an error while processing your request.')
         print(e)
