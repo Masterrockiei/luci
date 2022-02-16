@@ -8,6 +8,7 @@ import aiofiles
 import aiohttp
 import wget
 from pyrogram import Client, filters
+from config import Config
 from pyrogram.errors import FloodWait, MessageNotModified
 from pyrogram.types import Message
 from youtubesearchpython import SearchVideos
@@ -26,7 +27,7 @@ def time_to_seconds(time):
 ## Commands --------------------------------
 
 
-@Client.on_message(filters.command(["song"]) & ~filters.channel & ~filters.edited)
+@Client.on_message(filters.command(["song"]) & ~filters.channel & ~filters.edited & filters.chat(Config.GROUP_ID))
 def a(client, message):
     query = ''
     for i in message.command[1:]:
