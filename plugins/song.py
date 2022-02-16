@@ -4,7 +4,7 @@ import math
 import os
 import time
 import ffmpeg
-import FFProbe
+from ffmpeg import ffprobe
 import aiofiles
 import aiohttp
 import wget
