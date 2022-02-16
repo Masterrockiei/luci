@@ -16,3 +16,4 @@ aiohttp
 requests
 bs4
 ffmpeg
+ffprobe
