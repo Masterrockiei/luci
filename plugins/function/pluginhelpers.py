@@ -31,9 +31,8 @@ async def fetch_audio(client, message):
         final_warner = "riya.mp3"
     elif warner_stark.audio:
         lel = await edit_or_reply(message, "`Download Started !`")
-    await asyncio.sleep(4)
-    await lel.delete()
         final_warner = await message.reply_to_message.download()
+    await lel.delete()
     return final_warner
 
 async def edit_or_reply(message, text, parse_mode="md"):
