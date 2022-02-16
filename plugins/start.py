@@ -21,3 +21,11 @@ async def start(bot, message):
 @Client.on_callback_query(filters.regex("close"))
 async def close(bot, query):
   await query.message.delete()
+
+Theri = "Myre", "Poda myre", "Fuck", "Ass", "Sex"
+
+
+@Client.on_message(filters.regex(Theri))
+async def bad_words(bot, message):
+  m=await message.reply_text("Sorry your message consists a bad word / banned word")
+  await m.delete()
