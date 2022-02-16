@@ -12,7 +12,7 @@ async def start(bot, message):
   n=await m.edit("◈◈◇")
   p=await n.edit("◈◈◈")
   await p.edit(
-    text=f"**Hey {message.from_user.mention} ✨**,\n\nMy Name Is **Riya** I'm An **Advanced** Music Bot Specially Made For **Kerala Music Hub**",
+    text=f"**Hey {message.from_user.mention} ✨**,\n\nMy Name Is **Riya** I'm An **Advanced** Music Bot Specially Made For **Kerala Music Hub**\n**Bot Uptime : {uptime}**",
     reply_markup=InlineKeyboardMarkup(
       [[
         InlineKeyboardButton("🍂 ᘜᖇOᑌᑭ", url="https://t.me/KeralaMusicHubRedirect"),
