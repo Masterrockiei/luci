@@ -23,6 +23,4 @@ async def close(bot, query):
   await query.message.delete()
 
 
-@Client.on_message(filters.regex(["Myre", "Poda myre", "Fuck", "Ass", "Sex"]))
-async def bad_words(bot, message):
-  await m.delete()
+
