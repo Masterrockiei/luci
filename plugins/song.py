@@ -27,7 +27,7 @@ def time_to_seconds(time):
 ## Commands --------------------------------
 
 
-@Client.on_message(filters.command(["song"]) & ~filters.channel & ~filters.edited & filters.chat(Config.GROUP_ID) & filters.private)
+@Client.on_message(filters.command(["song"]) & ~filters.channel & ~filters.edited & filters.chat(Config.GROUP_ID))
 def a(client, message):
     query = ''
     for i in message.command[1:]:
