@@ -34,7 +34,6 @@ def a(client, message):
     print(query)
     m = message.reply("⬆️ Processing")
     ydl_opts = {
-            'outtmpl': './'+file_name,
             'format': 'bestaudio/best',
             'postprocessors': [{
                 'key': 'FFmpegExtractAudio',
