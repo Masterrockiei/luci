@@ -49,7 +49,7 @@ def a(client, message):
                 "preferredquality": "320",
             }
         ],
-        "outtmpl": "downloads/%(id)s.mp3",",
+        "outtmpl": "downloads/%(id)s.mp3",
         "quiet": True,
         "logtostderr": False,
     }
