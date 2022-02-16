@@ -6,10 +6,10 @@ import requests
 # import ffmpeg
 from pyrogram import filters
 from plugins.function.pluginhelpers import edit_or_reply, fetch_audio
-from pyrogram import Client as pbot
+from pyrogram import Client
 
 
-@pbot.on_message(filters.command(["find", "identify"]))
+@Client.on_message(filters.command(["find", "identify"]))
 async def shazamm(client, message):
     kek = await edit_or_reply(message, "Identifying the song !!")
     if not message.reply_to_message:
