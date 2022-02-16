@@ -15,7 +15,7 @@ from pyrogram.errors import FloodWait, MessageNotModified
 from pyrogram.types import Chat, Message, User
 
 from config import Config
-from plugins.services.pyrogram import pbot
+from bot import Client as pbot
 
 SUPPORT_CHAT = os.environ.get("SUPPORT_CHAT", " ")
 
