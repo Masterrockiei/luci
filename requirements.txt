@@ -4,18 +4,9 @@ ffprobe==0.5
 
 
 # General
-telethon==1.19.5
-pyrogram>=1.0.7
-aiogram == 2.13
 
-# DBs
-redis
-aioredis==1.3.0 # Redis memery storage fom aiogram
-pymongo
-motor
-odmantic # MongoDB ORM
-sqlalchemy==1.3.20 # For old modules
-dnspython # needed to connect to cloud MongoDB instances
+pyrogram
+aiogram == 2.13
 
 # Optional deps to make bot faster
 aiohttp[speedups]
@@ -38,13 +29,6 @@ captcha
 async-timeout
 regex
 bs4
-lxml
-spamwatch
-httpx[http2]
-wikipedia
-coffeehouse
-PyDictionary==2.0.1
-google-trans-new==1.1.9
 hachoir
 telegraph
 faker
@@ -53,7 +37,6 @@ geopy
 tswift
 lyricsgenius
 sentry_sdk
-lxml
 html5lib
 feedparser
 tldextract
@@ -93,16 +76,7 @@ asyncio
 #Markup
 Markdown>=3.3.4
 
-#profanity (Credits to Julia)
-better_profanity
-textblob 
-nudepy
-
-#ImageEditor
-glitch_this
-NumPy
-opencv-python-headless
-Pillow
+Pillow>=4.2.0
 
 #Bassboost
 pydub
