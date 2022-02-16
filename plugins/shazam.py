@@ -6,7 +6,7 @@ import requests
 # import ffmpeg
 from pyrogram import filters
 from plugins.function.pluginhelpers import edit_or_reply, fetch_audio
-from bot import Client as pbot
+from bot import pbot
 
 
 @pbot.on_message(filters.command(["find", "identify"]))
