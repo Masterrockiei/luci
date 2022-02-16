@@ -15,7 +15,8 @@ TIME_DURATION_UNITS = (
     ('sec', 1)
 )
 
-@Client.on_message(filters.command(["start", "find"]) & filters.chat(Config.GROUP_ID) | filters.private)
+@Client.on_message(filters.command(
+"start") & filters.chat(Config.GROUP_ID) | filters.private)
 async def start(bot, message):
   current_time = datetime.utcnow()
   uptime_sec = (current_time - START_TIME).total_seconds()
