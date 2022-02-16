@@ -6,6 +6,7 @@ from shazamio import Shazam, exceptions, FactoryArtist, FactoryTrack
 shazam = Shazam()
 
 
+class bot(Client):
     async def recognize(self, path):
         return await shazam.recognize_song(path)
 
