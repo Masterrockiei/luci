@@ -4,7 +4,6 @@ import math
 import os
 import time
 import ffmpeg
-from ffmpeg import ffprobe
 import aiofiles
 import aiohttp
 import wget
@@ -38,7 +37,7 @@ def a(client, message):
             'format': 'bestaudio/best',
             'postprocessors': [{
                 'key': 'FFmpegExtractAudio',
-                'preferredcodec': 'mp3',
+                'preferredcodec': 'wav',
                 'preferredquality': '256',
             }],
             'prefer_ffmpeg': True
