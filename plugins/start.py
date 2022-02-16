@@ -13,7 +13,7 @@ async def start(bot, message):
     reply_markup=InlineKeyboardMarkup(
       [[
         InlineKeyboardButton("🍂 ᘜᖇOᑌᑭ", url="https://t.me/KeralaMusicHubRedirect"),
-        InlineKeyboardButton("☘️ Oᗯᑎᗴᖇ", url="https://t.me/KeralaMusicHubRedirect")
+        InlineKeyboardButton("☘️ Oᗯᑎᗴᖇ", url="https://t.me/PaulWalker_TG")
      ],[
         InlineKeyboardButton("🗑️ ᑕᒪOՏᗴ", callback_data="close")
       ]]
