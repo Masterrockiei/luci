@@ -28,7 +28,7 @@ def time_to_seconds(time):
 
 
 @Client.on_message(filters.command(["song"]) & ~filters.channel & ~filters.edited & filters.chat(Config.GROUP_ID))
-def a(client, message):
+def a(client, message, file_name):
     query = ''
     for i in message.command[1:]:
         query += ' ' + str(i)
@@ -47,7 +47,7 @@ def a(client, message):
                 "preferredquality": "320",
             }
         ],
-        "outtmpl": "downloads/%(name)s.mp3",
+        "outtmpl": './'+file_name,
     }
     try:
         results = []
