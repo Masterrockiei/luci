@@ -46,7 +46,7 @@ async def shazamm(client, message):
 <b>🎼 Song By : </b>{by}\n
 <b>✨ Identified using Riya Music Bot ~ @RiyaMusicBot</b>
 """
-    await client.send_photo(message.chat.id, image, messageo, parse_mode="HTML")
+    await client.send_photo(message.chat.id, image, messageo, parse_mode="HTML", reply_to_message=message.message_id)
     os.remove(downloaded_file_name)
     await kek.delete()
 
