@@ -30,7 +30,7 @@ async def shazamm(client, message):
         )
         return
     if xo.get("success") is False:
-        await kek.edit("`Song Not Found IN Database. Please Try Again.`")
+        await kek.edit("Song Not Found IN Database. Please Try Again.")
         os.remove(downloaded_file_name)
         return
     xoo = xo.get("response")
@@ -41,11 +41,10 @@ async def shazamm(client, message):
     image = nt.get("coverarthq")
     by = zzz.get("subtitle")
     title = zzz.get("title")
-    messageo = f"""<b>Song Shazamed.</b>
-<b>Song Name : </b>{title}
-<b>Song By : </b>{by}
-<u><b>Identified using Riya Music Bot ~ @RiyaMusicBot </b></u>
-<i>Powered By AI</i>
+    messageo = f"""<b><u>Song Shazamed !!</u></b>
+<b>🎵 Song Name : </b>{title}\n
+<b>🎼 Song By : </b>{by}\n
+<b>✨ Identified using Riya Music Bot ~ @RiyaMusicBot</b>
 """
     await client.send_photo(message.chat.id, image, messageo, parse_mode="HTML")
     os.remove(downloaded_file_name)
