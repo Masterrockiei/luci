@@ -34,13 +34,10 @@ def a(client, message):
     print(query)
     m = message.reply("⬆️ Processing")
     ydl_opts = {
-            'format': 'bestaudio/best',
-            'postprocessors': [{
-                'key': 'FFmpegExtractAudio',
-                'preferredcodec': 'mp3',
-                'preferredquality': '256',
-            }],
-            'prefer_ffmpeg': True
+        "format": "bestaudio[ext=m4a]",
+        "geo-bypass": True,
+        "nocheckcertificate": True,
+        "outtmpl": "downloads/%(id)s.%(ext)s",
         }
     try:
         results = []
