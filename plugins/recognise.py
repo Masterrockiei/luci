@@ -1,5 +1,5 @@
 
-from pyrogram import Client as bot
+from plugins import botx as bot
 from pyrogram import filters, types
 import os
 
