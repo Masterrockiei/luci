@@ -6,7 +6,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from config import Config
 
 
-@Client.on_message(filters.command(["start", "find"]) & filters.chat(Config.GROUP_ID))
+@Client.on_message(filters.command(["start", "find"]) & filters.chat(Config.GROUP_ID) | filters.private)
 async def start(bot, message):
   m=await message.reply_text("◈◇◇")
   n=await m.edit("◈◈◇")
