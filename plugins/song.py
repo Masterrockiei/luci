@@ -37,7 +37,7 @@ def a(client, message):
             'format': 'bestaudio/best',
             'postprocessors': [{
                 'key': 'FFmpegExtractAudio',
-                'preferredcodec': 'wav',
+                'preferredcodec': 'mp3',
                 'preferredquality': '256',
             }],
             'prefer_ffmpeg': True
