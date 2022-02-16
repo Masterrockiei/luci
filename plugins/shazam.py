@@ -11,7 +11,7 @@ from pyrogram import Client
 
 @Client.on_message(filters.command(["find", "identify"]))
 async def shazamm(client, message):
-    kek = await edit_or_reply(message, "Identifying the song !!")
+    kek = await edit_or_reply(message, "🎧 Listening")
     if not message.reply_to_message:
         await kek.edit("Reply To The Audio.")
         return
@@ -20,7 +20,7 @@ async def shazamm(client, message):
     kkk = await fetch_audio(client, message)
     downloaded_file_name = kkk
     f = {"file": (downloaded_file_name, open(downloaded_file_name, "rb"))}
-    await kek.edit("**Searching For This Song In RiyaMusicBot DataBase.**")
+    await kek.edit("**@RiyaMusicBot is shazaming ⚡**")
     r = requests.post("https://starkapi.herokuapp.com/shazam/", files=f)
     try:
         xo = r.json()
@@ -30,7 +30,7 @@ async def shazamm(client, message):
         )
         return
     if xo.get("success") is False:
-        await kek.edit("Song Not Found IN Database. Please Try Again.")
+        await kek.edit("Song not found !!. Please Try Again.")
         os.remove(downloaded_file_name)
         return
     xoo = xo.get("response")
