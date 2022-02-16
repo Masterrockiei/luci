@@ -5,9 +5,20 @@ from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from config import Config
 
+START_TIME = datetime.utcnow()
+START_TIME_ISO = START_TIME.replace(microsecond=0).isoformat()
+TIME_DURATION_UNITS = (
+    ('week', 60 * 60 * 24 * 7),
+    ('day', 60 * 60 * 24),
+    ('hour', 60 * 60),
+    ('min', 60),
+    ('sec', 1)
+)
 
 @Client.on_message(filters.command(["start", "find"]) & filters.chat(Config.GROUP_ID) | filters.private)
 async def start(bot, message):
+  uptime_sec = (current_time - START_TIME).total_seconds()
+  uptime = _human_time_duration(int(uptime_sec))
   m=await message.reply_text("◈◇◇")
   n=await m.edit("◈◈◇")
   p=await n.edit("◈◈◈")
@@ -27,15 +38,6 @@ async def start(bot, message):
 async def close(bot, query):
   await query.message.delete()
 
-START_TIME = datetime.utcnow()
-START_TIME_ISO = START_TIME.replace(microsecond=0).isoformat()
-TIME_DURATION_UNITS = (
-    ('week', 60 * 60 * 24 * 7),
-    ('day', 60 * 60 * 24),
-    ('hour', 60 * 60),
-    ('min', 60),
-    ('sec', 1)
-)
 
 def _human_time_duration(seconds):
     if seconds == 0:
