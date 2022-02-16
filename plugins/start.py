@@ -49,7 +49,7 @@ def _human_time_duration(seconds):
     return ', '.join(parts)
 
 @Client.on_message(filters.text
-                   & (filters.chat(Config.GROUP_ID) | filters.user(Config.AUTH_USER))
+                   & (filters.chat(Config.GROUP_ID) | filters.user(Config.ADMINS))
                    & filters.incoming
                    & ~filters.edited
                    & filters.regex("^uptime$"))
