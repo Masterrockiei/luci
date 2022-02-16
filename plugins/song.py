@@ -47,7 +47,7 @@ def a(client, message):
                 "preferredquality": "320",
             }
         ],
-        "outtmpl": "downloads/%()s.mp3" ,
+        "outtmpl": "downloads/%(track)s.mp3" ,
     }
     try:
         results = []
