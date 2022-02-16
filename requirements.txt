@@ -19,3 +19,4 @@ bs4
 ffmpeg==1.4
 ffmpeg-python==0.2.0
 ffprobe==0.5
+shazamio
