@@ -62,9 +62,9 @@ async def shazamm(client, message):
     title = zzz.get("title")
 
 def a(client, message):
-    query = ""
+    query = ''
     for i in message.command[1:]:
-        query += f"{title}" + str(i)
+        query += ' ' + str(i)
     print(query)
     m = message.reply("⬆️ Processing")
     ydl_opts = {
@@ -138,4 +138,3 @@ def a(client, message):
         os.remove(thumb_name)
     except Exception as e:
         print(e)
-     
