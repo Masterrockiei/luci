@@ -107,9 +107,9 @@ async def shazamm(client: Client, message: Message):
             thumb.write(thumb_res.content)
 
         capt = f"""
-🎵 Song : <code>{yt_result['title']}</code>\n
-🎵 Requested by : {message.from_user.mention}\n
-🎵 Duration : {yt_result['duration']}\n
+♬ <b>Song : {yt_result['title']}</b>
+♬ <b>Duration : {yt_result['duration']}</b>
+♬ <b>Requested by : {message.from_user.mention}</b>
         """
 
         await message.reply_audio(
@@ -118,7 +118,7 @@ async def shazamm(client: Client, message: Message):
             quote=True,
             parse_mode='html',
             duration=dur,
-            performer=f"RiyaMusicBot",
+            performer=f"[RiyaMusicBot]",
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Watch Video", url=yt_result['link'])]]),
             thumb=thumb_file
         )
