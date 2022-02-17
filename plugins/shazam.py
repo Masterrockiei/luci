@@ -106,23 +106,23 @@ async def shazamm(client, message):
             thumb_name = f'thumb{message.message_id}.jpg'
             thumb = requests.get(thumbnail, allow_redirects=True)
             open(thumb_name, 'wb').write(thumb.content)
-    try:
-        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-            info_dict = ydl.extract_info(link, download=False)
-            audio_file = ydl.prepare_filename(info_dict) 
-            ydl.process_info(info_dict)
-        rep = f"♬ <b>Title : {title}</b>\n♬ <b>Duration : {duration}</b>\n<b>♬ Link : <a href='{link}'>Click here</a> </b>\n♬ <b>Requested By : {message.from_user.mention}</b>"
-        secmul, dur, dur_arr = 1, 0, duration.split(':')
-        for i in range(len(dur_arr)-1, -1, -1):
-            dur += (int(dur_arr[i]) * secmul)
-            secmul *= 60
-        message.reply_audio(audio_file, caption=rep, parse_mode='HTML',quote=False, title=title, duration=dur, performer=performer, thumb=thumb_name, reply_to_message_id=message.message_id)
-        m.delete()
-    except Exception as e:
-        m.edit('There is an error while processing your request.')
-        print(e)
-    try:
-        os.remove(audio_file)
-        os.remove(thumb_name)
-    except Exception as e:
-        print(e)
+       try:
+           with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+              info_dict = ydl.extract_info(link, download=False)
+              audio_file = ydl.prepare_filename(info_dict) 
+              ydl.process_info(info_dict)
+           rep = f"♬ <b>Title : {title}</b>\n♬ <b>Duration : {duration}</b>\n<b>♬ Link : <a href='{link}'>Click here</a> </b>\n♬ <b>Requested By : {message.from_user.mention}</b>"
+           secmul, dur, dur_arr = 1, 0, duration.split(':')
+           for i in range(len(dur_arr)-1, -1, -1):
+               dur += (int(dur_arr[i]) * secmul)
+               secmul *= 60
+           message.reply_audio(audio_file, caption=rep, parse_mode='HTML',quote=False, title=title, duration=dur, performer=performer, thumb=thumb_name, reply_to_message_id=message.message_id)
+           m.delete()
+        except Exception as e:
+           m.edit('There is an error while processing your request.')
+           print(e)
+       try:
+           os.remove(audio_file)
+           os.remove(thumb_name)
+       except Exception as e:
+           print(e)
