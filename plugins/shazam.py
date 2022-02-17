@@ -4,7 +4,7 @@ import math
 import asyncio
 import time
 import aiofiles
-import aiohttps
+import aiohttp
 import wget
 import os
 from json import JSONDecodeError
