@@ -67,7 +67,7 @@ async def shazamm(client: Client, message: Message):
 """
    #  kk = await client.send_photo(message.chat.id, image, text, parse_mode="HTML")
    # os.remove(downloaded_file_name)
-   # await kek.delete()
+   await kek.delete()
 
     hm = await kek.reply_text(f"⬆️ Uploading", parse_mode='html')
 
@@ -122,7 +122,7 @@ async def shazamm(client: Client, message: Message):
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Watch Video", url=yt_result['link'])]]),
             thumb=thumb_file
         )
-        await kek.delete()
+        await hm.delete()
 
     except Exception as e:
         print(e)
