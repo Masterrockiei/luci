@@ -64,7 +64,7 @@ async def shazamm(client, message):
 def a(client, message):
     query = ''
     for i in message.command[1:]:
-        query += ' ' + str(i)
+        query += f'{title}' + str(i)
     print(query)
     m = message.reply("⬆️ Processing")
     ydl_opts = {
