@@ -1,0 +1,42 @@
+{
+    "name": "MusicPlayer",
+    "description": "A Bot To Play Music",
+    "keywords": [
+        "Music",
+        "Telegram",
+        "Bot"
+    ],
+    "env": {
+        "API_ID": {
+            "description": "Your APP ID From my.telegram.org or @UseTGXBot",
+            "value": ""
+        },
+        "API_HASH": {
+            "description": "Your API Hash From my.telegram.org or @UseTGXBot",
+            "value": ""
+        },
+        "BOT_TOKEN": {
+            "description": "Your Bot's Token From @BotFather",
+            "value": ""
+        },
+        "ADMINS": {
+            "description": "List of admins",
+            "value": ""
+        },
+        "GROUP_ID": {
+            "description": "Your groups id",
+            "value": ""
+        }
+    },
+    "buildpacks": [
+        {
+            "url": "heroku/python"
+        }
+    ],
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
+    }
+}
