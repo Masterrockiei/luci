@@ -26,7 +26,9 @@ def a(client, message):
     for i in message.command[1:]:
         query += ' ' + str(i)
     print(query)
-    m = message.reply("⬆️ Processing")
+    m = message.reply("◈◇◇")
+    q = m.edit("◈◈◇")
+    b = q.edit("◈◈◈")
     ydl_opts = {
         "format": "bestaudio",
         "key": "FFmpegMetadata",
@@ -76,9 +78,8 @@ def a(client, message):
         m.edit("Use a valid command , /song song name")
         print(str(e))
         return
-    n=m.edit("⬆️ Uploading..")
-    o=n.edit("⬆️ Uploading...")
-    p=o.edit("⬆️ Uploading....")
+    n=m.edit("↻ Processing")
+    o=n.edit("⇬ Uploading")
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
