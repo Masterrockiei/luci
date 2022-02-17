@@ -107,9 +107,9 @@ async def shazamm(client: Client, message: Message):
             thumb.write(thumb_res.content)
 
         capt = f"""
-        🎵 Song : <code>{yt_result['title']}</code>
-        🎵 Requested by : {message.from_user.mention}
-        🎵 Duration : {yt_result['duration']}
+🎵 Song : <code>{yt_result['title']}</code>\n
+🎵 Requested by : {message.from_user.mention}\n
+🎵 Duration : {yt_result['duration']}\n
         """
 
         await message.reply_audio(
@@ -122,6 +122,7 @@ async def shazamm(client: Client, message: Message):
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Watch Video", url=yt_result['link'])]]),
             thumb=thumb_file
         )
+        await kek.delete()
 
     except Exception as e:
         print(e)
