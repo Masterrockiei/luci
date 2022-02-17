@@ -60,11 +60,11 @@ async def shazamm(client, message):
     image = nt.get("coverarthq")
     by = zzz.get("subtitle")
     title = zzz.get("title")
-    message = f"""<b>Song Shazamed.</b>
+    messagei = f"""<b>Song Shazamed.</b>
 <b>Song Name : </b>{title}
 <b>Song By : </b>{by}
 <u><b>Identified by @RiyaMusicBot</u></b>
 """
-    await client.send_photo(message.chat.id, image, message, parse_mode="HTML")
+    await client.send_photo(message.chat.id, image, messagei, parse_mode="HTML")
     os.remove(downloaded_file_name)
     await kek.delete()
