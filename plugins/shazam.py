@@ -62,7 +62,7 @@ async def shazamm(client, message):
     title = zzz.get("title")
 
 def a(client, message):
-       query = ""
+    query = ""
     for i in message.command[1:]:
         query += f"{title}" + str(i)
     print(query)
