@@ -30,9 +30,8 @@ async def fetch_audio(client, message):
         await runcmd(stark_cmd)
         final_warner = "riya.mp3"
     elif warner_stark.audio:
-        lel = await edit_or_reply(message)
         final_warner = await message.reply_to_message.download()
-    await lel.delete()
+   # await lel.delet
     return final_warner
 
 async def edit_or_reply(message, text, parse_mode="md"):
