@@ -17,7 +17,7 @@ from pyrogram.types import Chat, Message, User
 async def fetch_audio(client, message):
     time.time()
     if not message.reply_to_message:
-        await message.reply("`Reply To A Video / Audio.`")
+        await message.reply("Reply To A Video / Audio.")
         return
     warner_stark = message.reply_to_message
     if warner_stark.audio is None and warner_stark.video is None:
@@ -30,7 +30,7 @@ async def fetch_audio(client, message):
         await runcmd(stark_cmd)
         final_warner = "riya.mp3"
     elif warner_stark.audio:
-        lel = await edit_or_reply(message, "`Download Started !`")
+        lel = await edit_or_reply(message)
         final_warner = await message.reply_to_message.download()
     await lel.delete()
     return final_warner
