@@ -39,7 +39,7 @@ async def shazamm(client: Client, message: Message):
     kkk = await fetch_audio(client, message)
     downloaded_file_name = kkk
     f = {"file": (downloaded_file_name, open(downloaded_file_name, "rb"))}
-    await kek.edit("**@RiyaMusicBot is shazaming ⚡**")
+    await kek.edit("**🎵 Analysing**")
     r = requests.post("https://starkapi.herokuapp.com/shazam/", files=f)
     try:
         xo = r.json()
@@ -65,11 +65,11 @@ async def shazamm(client: Client, message: Message):
 <b>Song By : </b>{by}
 <u><b>Identified by @RiyaMusicBot</u></b>
 """
-    kk = await message.reply_text("⬆️ Uploading.")
+    kk = await message.reply_text("**@RiyaMusicBot is Shazaming ⚡**")
     os.remove(downloaded_file_name)
     await kek.delete()
 
-    hm = await kk.edit(f"⬆️ Uploading..", parse_mode='html')
+    hm = await kk.edit(f""**⬆️ Uploading", parse_mode='html')
 
     yt_result = VideosSearch(
         query=title,
