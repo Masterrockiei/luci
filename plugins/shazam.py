@@ -65,11 +65,11 @@ async def shazamm(client: Client, message: Message):
 <b>Song By : </b>{by}
 <u><b>Identified by @RiyaMusicBot</u></b>
 """
-    kk = await client.send_photo(message.chat.id, image, text, parse_mode="HTML")
-    os.remove(downloaded_file_name)
-    await kek.delete()
+   #  kk = await client.send_photo(message.chat.id, image, text, parse_mode="HTML")
+   # os.remove(downloaded_file_name)
+   # await kek.delete()
 
-    hm = await kk.reply_text(f"Trying To Download {title} by {by}", parse_mode='html')
+    hm = await kk.reply_text(f"⬆️ Uploading", parse_mode='html')
 
     yt_result = VideosSearch(
         query=title,
@@ -107,10 +107,9 @@ async def shazamm(client: Client, message: Message):
             thumb.write(thumb_res.content)
 
         capt = f"""
-        Song : <code>{yt_result['title']}</code>
-        Requested by : {message.from_user.mention}
-        Duration : {yt_result['duration']}
-        Musician : {yt_result['channel']['name']}
+        🎵 Song : <code>{yt_result['title']}</code>
+        🎵 Requested by : {message.from_user.mention}
+        🎵 Duration : {yt_result['duration']}
         """
 
         await message.reply_audio(
@@ -119,7 +118,7 @@ async def shazamm(client: Client, message: Message):
             quote=True,
             parse_mode='html',
             duration=dur,
-            performer=yt_result['channel']['name'],
+            performer=f"RiyaMusicBot",
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Watch Video", url=yt_result['link'])]]),
             thumb=thumb_file
         )
