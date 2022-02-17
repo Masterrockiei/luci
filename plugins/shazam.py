@@ -1,12 +1,31 @@
+## Commands --------------------------------
+from __future__ import unicode_literals
+import math
+import asyncio
+import time
+import aiofiles
+import aiohttps
+import wget
 import os
 from json import JSONDecodeError
-
 import requests
-
-# import ffmpeg
+import ffmpeg
+from pyrogram.errors import FloodWait, MessageNotModified
+from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
+from youtubesearchpython import SearchVideos
+import yt_dlp
+from youtube_search import YoutubeSearch
+import requests
 from pyrogram import filters
 from plugins.function.pluginhelpers import edit_or_reply, fetch_audio
 from pyrogram import Client
+
+
+# Convert hh:mm:ss to seconds
+def time_to_seconds(time):
+    stringt = str(time)
+    return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
+
 
 
 @Client.on_message(filters.command(["find", "identify"]))
@@ -41,14 +60,81 @@ async def shazamm(client, message):
     image = nt.get("coverarthq")
     by = zzz.get("subtitle")
     title = zzz.get("title")
-    messageo = f"""<b><u>Song Shazamed !!</u></b>\n
-<b>🎵 Song Name : </b>{title}\n
-<b>🎼 Song By : </b>{by}\n
-<b>✨ Identified using Riya Music Bot ~ @RiyaMusicBot</b>
-"""
-    await client.send_photo(message.chat.id, image, messageo, parse_mode="HTML")
-    os.remove(downloaded_file_name)
-    await kek.delete()
+    try:
+       query = ""
+    for i in message.command[1:]:
+        query += f"{title}" + str(i)
+    print(query)
+    m = message.reply("⬆️ Processing")
+    ydl_opts = {
+        "format": "bestaudio",
+        "key": "FFmpegMetadata",
+        "prefer_ffmpeg": True,
+        "geo_bypass": True,
+        "nocheckcertificate": True,
+        "postprocessors": [
+            {
+                "key": "FFmpegExtractAudio",
+                "preferredcodec": "mp3",
+                "preferredquality": "320",
+            }
+        ],
+        "outtmpl": "downloads/%(track)s.mp3" ,
+    }
+    try:
+        results = []
+        count = 0
+        while len(results) == 0 and count < 6:
+            if count>0:
+                time.sleep(1)
+            results = YoutubeSearch(query, max_results=1).to_dict()
+            count += 1
+        # results = YoutubeSearch(query, max_results=1).to_dict()
+        try:
+            link = f"https://youtube.com{results[0]['url_suffix']}"
+            # print(results)
+            title = results[0]["title"]
+            thumbnail = results[0]["thumbnails"][0]
+            duration = results[0]["duration"]
+            views = results[0]["views"]
 
+            ## UNCOMMENT THIS IF YOU WANT A LIMIT ON DURATION. CHANGE 1800 TO YOUR OWN PREFFERED DURATION AND EDIT THE MESSAGE (30 minutes cap) LIMIT IN SECONDS
+            if time_to_seconds(duration) >= 1800:  # duration limit
+                 m.edit("Exceeded 30mins cap")
+                 return
 
+            performer = f"[Riya Music Bot]" 
+            thumb_name = f'thumb{message.message_id}.jpg'
+            thumb = requests.get(thumbnail, allow_redirects=True)
+            open(thumb_name, 'wb').write(thumb.content)
 
+        except Exception as e:
+            print(e)
+            m.edit("Server busy due to overload, Please try again later.")
+            return
+    except Exception as e:
+        m.edit("Use a valid command , /song song name")
+        print(str(e))
+        return
+    m.edit("⬆️ Uploading.")
+    try:
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            info_dict = ydl.extract_info(link, download=False)
+            audio_file = ydl.prepare_filename(info_dict) 
+            ydl.process_info(info_dict)
+        rep = f"♬ <b>Title : {title}</b>\n♬ <b>Duration : {duration}</b>\n<b>♬ Link : <a href='{link}'>Click here</a> </b>\n♬ <b>Requested By : {message.from_user.mention}</b>"
+        secmul, dur, dur_arr = 1, 0, duration.split(':')
+        for i in range(len(dur_arr)-1, -1, -1):
+            dur += (int(dur_arr[i]) * secmul)
+            secmul *= 60
+        message.reply_audio(audio_file, caption=rep, parse_mode='HTML',quote=False, title=title, duration=dur, performer=performer, thumb=thumb_name, reply_to_message_id=message.message_id)
+        m.delete()
+    except Exception as e:
+        m.edit('There is an error while processing your request.')
+        print(e)
+    try:
+        os.remove(audio_file)
+        os.remove(thumb_name)
+    except Exception as e:
+        print(e)
+     
