@@ -16,16 +16,9 @@ import yt_dlp
 from youtube_search import YoutubeSearch
 import requests
 
-## Extra Fns -------------------------------
-
-# Convert hh:mm:ss to seconds
 def time_to_seconds(time):
     stringt = str(time)
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
-
-
-## Commands --------------------------------
-
 
 @Client.on_message(filters.command(["song"]) & ~filters.channel & ~filters.edited & filters.chat(Config.GROUP_ID))
 def a(client, message):
