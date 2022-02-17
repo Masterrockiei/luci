@@ -60,7 +60,8 @@ async def shazamm(client, message):
     image = nt.get("coverarthq")
     by = zzz.get("subtitle")
     title = zzz.get("title")
-    try:
+
+def a(client, message):
        query = ""
     for i in message.command[1:]:
         query += f"{title}" + str(i)
