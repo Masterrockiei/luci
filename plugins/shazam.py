@@ -106,16 +106,6 @@ async def shazamm(client, message):
             thumb_name = f'thumb{message.message_id}.jpg'
             thumb = requests.get(thumbnail, allow_redirects=True)
             open(thumb_name, 'wb').write(thumb.content)
-
-        except Exception as e:
-            print(e)
-            m.edit("Server busy due to overload, Please try again later.")
-            return
-    except Exception as e:
-        m.edit("Use a valid command , /song song name")
-        print(str(e))
-        return
-    m.edit("⬆️ Uploading.")
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
