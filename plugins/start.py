@@ -25,13 +25,13 @@ async def start(bot, message):
   n=await m.edit("◈◈◇")
   p=await n.edit("◈◈◈")
   await p.edit(
-    text=f"**Hey {message.from_user.mention} ✨**,\n\nMy Name Is **Riya** I'm An **Advanced** Music Bot Specially Made For **Kerala Music Hub**\n\n**Bot Uptime : {uptime}**",
+    text=f"**Hey {message.from_user.mention} 🌺, I am an Advanced Music Bot and A Song Recognise Bot, I'm Only Made For Kerala Beats**\n\n**Bot Uptime : {uptime}**",
     reply_markup=InlineKeyboardMarkup(
       [[
-        InlineKeyboardButton("🍂 ᘜᖇOᑌᑭ", url="https://t.me/KeralaMusicHubRedirect"),
-        InlineKeyboardButton("☘️ Oᗯᑎᗴᖇ", url="https://t.me/PaulWalker_TG")
+        InlineKeyboardButton("♬ Group", url="https://t.me/KeralaMusicHubRedirect"),
+        InlineKeyboardButton("҂ Updates", url="https://t.me/sakurabotupdates")
      ],[
-        InlineKeyboardButton("🗑️ ᑕᒪOՏᗴ", callback_data="close")
+        InlineKeyboardButton("↻ Close", callback_data="close")
       ]]
     )
   )
