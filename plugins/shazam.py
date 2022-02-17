@@ -69,7 +69,7 @@ async def shazamm(client: Client, message: Message):
    # os.remove(downloaded_file_name)
    # await kek.delete()
 
-    hm = await kk.reply_text(f"⬆️ Uploading", parse_mode='html')
+    hm = await kek.reply_text(f"⬆️ Uploading", parse_mode='html')
 
     yt_result = VideosSearch(
         query=title,
