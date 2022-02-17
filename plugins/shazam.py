@@ -65,11 +65,11 @@ async def shazamm(client: Client, message: Message):
 <b>Song By : </b>{by}
 <u><b>Identified by @RiyaMusicBot</u></b>
 """
-   #  kk = await client.send_photo(message.chat.id, image, text, parse_mode="HTML")
-   # os.remove(downloaded_file_name)
-   await kek.delete()
+    kk = await message.reply_text("⬆️ Uploading.")
+    os.remove(downloaded_file_name)
+    await kek.delete()
 
-    hm = await kek.reply_text(f"⬆️ Uploading", parse_mode='html')
+    hm = await kk.edit(f"⬆️ Uploading..", parse_mode='html')
 
     yt_result = VideosSearch(
         query=title,
