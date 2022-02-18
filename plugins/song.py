@@ -16,104 +16,102 @@ import yt_dlp
 from youtube_search import YoutubeSearch
 import requests
 
-is_downloading = False
+def time_to_seconds(time):
+    stringt = str(time)
+    return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
 
-def time_second(time):
-	string = str(time)
-	return sum(int(x) * 60 ** i for i, x in enumerate(reversed(string.split(":"))))
-	
 @Client.on_message(filters.command(["song"]) & ~filters.channel & ~filters.edited & filters.chat(Config.GROUP_ID))
-async def music(client, message):
-  global is_downloading
-  if is_downloading:
-    await message.reply_text("Please wait an another download is on process")
-    return
-  is_downloading = True
-  query = ''
-  for i in message.command[1:]:
-    query += ' ' + str(i)
-  print(query)
-  m = await message.reply_text("🎵 Processing")
-  ydl_opts = {
-    "format" : "bestaudio",
-    "key" : "FFmpegMetadata",
-    "prefer_ffmpeg" : True,
-    "postprocessors" : [
-      {
-        "key" : "FFmpegExtractAudio",
-        "preferredcodec" : "mp3",
-        "preferredquality" : "320",
-      }
-    ],
-    "outtmpl" : "downloads/%(track)s.mp3",
-  }
-  try:
-    results = []
-    count = 0
-    while len(results) == 0 and count < 6:
-      if count>0:
-        time.sleep(1)
-      results = YoutubeSearch(query, max_results=1).to_dict()
-      count += 1
+def a(client, message):
+    query = ''
+    for i in message.command[1:]:
+        query += ' ' + str(i)
+    print(query)
+    m = message.reply("**🎵 Processing**")
+    ydl_opts = {
+        "format": "bestaudio",
+        "key": "FFmpegMetadata",
+        "prefer_ffmpeg": True,
+        "geo_bypass": True,
+        "nocheckcertificate": True,
+        "postprocessors": [
+            {
+                "key": "FFmpegExtractAudio",
+                "preferredcodec": "mp3",
+                "preferredquality": "320",
+            }
+        ],
+        "outtmpl": "downloads/%(track)s.mp3" ,
+    }
     try:
-      link = f"https://youtube.com{results[0]['url_suffix']}"
-      title = results[0]['title']
-      dur = results[0]['duration']
-      thumbs = results[0]['thumbnails']
-      
-      if time_second(dur) >= 900:
-        await m.edit("The video duration is more than 15 minutes")
-        return
+        results = []
+        count = 0
+        while len(results) == 0 and count < 6:
+            if count>0:
+                time.sleep(1)
+            results = YoutubeSearch(query, max_results=1).to_dict()
+            count += 1
+        # results = YoutubeSearch(query, max_results=1).to_dict()
+        try:
+            link = f"https://youtube.com{results[0]['url_suffix']}"
+            # print(results)
+            title = results[0]["title"]
+            thumbnail = results[0]["thumbnails"][0]
+            duration = results[0]["duration"]
+            views = results[0]["views"]
 
-      performer = f"[RiyaMusicBot]"
-      thumb_name = f'thumb{message.message_id}.jpg'
-      thumb = requests.get(thumbs, allow_redirects=True)
-      open(thumb_name, 'wb').write(thumb.content)
-      
+            if time_to_seconds(duration) >= 1800:  # duration limit
+                 m.edit("Exceeded 30mins cap")
+                 return
+
+            performer = f"[Riya Music Bot]" 
+            thumb_name = f'thumb{message.message_id}.jpg'
+            thumb = requests.get(thumbnail, allow_redirects=True)
+            open(thumb_name, 'wb').write(thumb.content)
+
+        except Exception as e:
+            print(e)
+            m.edit("Server busy due to overload, Please try again later.")
+            return
     except Exception as e:
-      print(e)
-      await m.edit("**Server busy due to overload in server**")
-      return
-  except Exception as e:
-    await m.edit(f"Sorry i can't find any song for your {query} ")
-    print(str(e))
-    return
-  await m.edit("**⬆️ Uploading**")
-  try:
-    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-      info_dict = ydl.extract_info(link, download=False)
-      audio_file = ydl.prepare_filename(info_dict)
-      ydl.process_info(info_dict)
-      rep = f""" 
-♬ <b>Title : {title}</b>\n
-♬ <b>Duration : {dur}</b>  
-♬ <b>Link : <a href='{link}'>Click here</a></b>\n
-♬ <b>Requested By : {message.from_user.mention}</b>
-      """
-      secmul, durs, dur_arr = 1, 0, dur.split(':')
-      for i in range(len(dur_arr)-1, -1, -1):
-        durs += (int(dur_arr[i]) * secmul)
-        secmul *= 60
-      await message.reply_audio(
+        m.edit("Use a valid command , /song song name")
+        print(str(e))
+        return
+    m.edit("**⬆️ Uploading**")
+    try:
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            info_dict = ydl.extract_info(link, download=False)
+            audio_file = ydl.prepare_filename(info_dict) 
+            ydl.process_info(info_dict)
+        rep = f"""
+        ♬ <b>Title : {title}</b>\n
+        ♬ <b>Duration : {duration}</b>\n
+        ♬ <b>Link : <a href='{link}'>Click here</a></b>\n
+        ♬ <b>Requested By : {message.from_user.mention}</b>
+        """
+        secmul, dur, dur_arr = 1, 0, duration.split(':')
+        for i in range(len(dur_arr)-1, -1, -1):
+            dur += (int(dur_arr[i]) * secmul)
+            secmul *= 60
+        message.reply_audio(
         audio_file,
         caption=rep,
-        parse_mode='html',
-        qoute=True,
+        parse_mode='HTML',
+        quote=False,
         title=title,
-        dur=durs,
+        duration=dur,
         performer=performer,
         thumb=thumb_name,
         reply_to_message_id=message.message_id
-        ) 
-      await m.delete()
-  except Exception as e:
-    await m.edit("There is an error with your download request.")
-    print(e)
-  try:
-    if not os.path.exist(FilePath):
-      await message.reply_audio(audio_file)
-      os.remove(thumb_name)
-  except Exception as e:
-    print(e)
-    
-  is_downloading = False
+        )
+        m.delete()
+    except Exception as e:
+        m.edit('There is an error while processing your request.')
+        print(e)
+    try: 
+        os.remove(audio_file)
+        os.remove(thumb_name)
+    except Exception as e:
+        print(e)
+        
+   
+
