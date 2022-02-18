@@ -24,7 +24,7 @@ def time_to_seconds(time):
 def a(client, message):
     global is_downloading
     if is_downloading:
-	await message.reply_text("Please wait an another download is on progress")
+	message.reply_text("Please wait an another download is on progress")
 	return
     query = ''
     for i in message.command[1:]:
