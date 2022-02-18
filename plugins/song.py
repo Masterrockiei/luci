@@ -92,7 +92,7 @@ def a(client, message):
             secmul *= 60
         message.reply_audio(audio_file,
         caption=rep,
-        parse_mode=''HTML'
+        parse_mode='HTML',
         quote=False,
         title=title,
         duration=dur,
