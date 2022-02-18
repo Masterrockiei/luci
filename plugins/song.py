@@ -22,11 +22,10 @@ def time_to_seconds(time):
 
 @Client.on_message(filters.command(["song"]) & ~filters.channel & ~filters.edited & filters.chat(Config.GROUP_ID))
 def a(client, message):
-	global is_downloading
-	if is_downloading:
-		await message.reply_text("Please wait an another download is on progress")
-		return
-
+    global is_downloading
+    if is_downloading:
+	await message.reply_text("Please wait an another download is on progress")
+	return
     query = ''
     for i in message.command[1:]:
         query += ' ' + str(i)
