@@ -57,7 +57,7 @@ async def music(client, message):
       count += 1
     try:
       link = f"https://youtube.com{results[0]['url_suffix']}"
-      title = result[0]['title']
+      title = results[0]['title']
       dur = results[0]['duration']
       thumbs = results[0]['thumbnails']
       
@@ -112,7 +112,7 @@ async def music(client, message):
   try:
     if not os.path.exist(FilePath):
       await message.reply_audio(audio_file)
-      os.remove(thum_name)
+      os.remove(thumb_name)
   except Exception as e:
     print(e)
     
