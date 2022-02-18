@@ -67,7 +67,6 @@ async def shazamm(client: Client, message: Message):
 """
     kk = await message.reply_text("**@RiyaMusicBot is Shazaming ⚡**")
     os.remove(downloaded_file_name)
-    await asyncio.sleep(10)
     await kek.delete()
 
     hm = await kk.edit("**⬆️ Uploading**")
