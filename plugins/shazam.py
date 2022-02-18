@@ -30,9 +30,9 @@ def time_to_seconds(time):
 
 @Client.on_message(filters.command(["find", "identify"]))
 async def shazamm(client: Client, message: Message):
-    kek = await edit_or_reply(message, "🎧 Listening")
+    kek = await edit_or_reply(message, "**🎧 Listening**")
     if not message.reply_to_message:
-        await kek.edit("Reply To The Audio.")
+        await kek.edit("**Reply To The Audio.**")
         return
     if os.path.exists("riya.mp3"):
         os.remove("riya.mp3")
@@ -49,7 +49,7 @@ async def shazamm(client: Client, message: Message):
         )
         return
     if xo.get("success") is False:
-        await kek.edit("Song not found !!. Please Try Again.")
+        await kek.edit("**Song not found !!. Please Try Again.**")
         os.remove(downloaded_file_name)
         return
     xoo = xo.get("response")
