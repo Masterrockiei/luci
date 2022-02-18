@@ -22,6 +22,11 @@ def time_to_seconds(time):
 
 @Client.on_message(filters.command(["song"]) & ~filters.channel & ~filters.edited & filters.chat(Config.GROUP_ID))
 def a(client, message):
+	global is_downloading
+	if is_downloading:
+		await message.reply_text("Please wait an another download is on progress")
+		return
+
     query = ''
     for i in message.command[1:]:
         query += ' ' + str(i)
@@ -82,7 +87,12 @@ def a(client, message):
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict) 
             ydl.process_info(info_dict)
-        rep = f"♬ <b>Title : {title}</b>\n♬ <b>Duration : {duration}</b>\n<b>♬ Link : <a href='{link}'>Click here</a> </b>\n♬ <b>Requested By : {message.from_user.mention}</b>"
+        rep = f"""
+        ♬ <b>Title : {title}</b>\n
+        ♬ <b>Duration : {duration}</b>\n
+        ♬ <b>Link : <a href='{link}'>Click here</a></b>\n
+        ♬ <b>Requested By : {message.from_user.mention}</b>
+        """
         secmul, dur, dur_arr = 1, 0, duration.split(':')
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
@@ -106,5 +116,6 @@ def a(client, message):
         os.remove(thumb_name)
     except Exception as e:
         print(e)
-
+        is_downloading = Flase
+   
 
