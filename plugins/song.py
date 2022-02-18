@@ -90,7 +90,8 @@ def a(client, message):
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
             secmul *= 60
-        message.reply_audio(audio_file, send_chat_action("Sending Audio"),
+        client.send_chat_action(chat_id, "Sending audio")
+        message.reply_audio(audio_file,
         caption=rep,
         parse_mode='HTML',
         quote=False,
