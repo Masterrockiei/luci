@@ -16,6 +16,8 @@ import yt_dlp
 from youtube_search import YoutubeSearch
 import requests
 
+is_downloading = False
+
 def time_second(time):
 	string = str(time)
 	return sum(int(x) * 60 ** i for i, x in enumerate(reversed(string.split(":"))))
