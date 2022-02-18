@@ -66,10 +66,3 @@ async def get_uptime(_, message: Message):
                                      f"**Start time:** `{START_TIME_ISO}`",
                                      quote=True)
 
-@Client.on_callback_query(filters.regex("forward"))
-async def frwd(bot, query):
-  await bot.send_cache_media(
-    chat_id=query.chat_id,
-    file_id=file_id    
-  )
-  await query.answer("Check Pm, I've sent the files in pm", show_alert=True)
