@@ -83,10 +83,10 @@ def a(client, message):
             audio_file = ydl.prepare_filename(info_dict) 
             ydl.process_info(info_dict)
         rep = f"""
-        ♬ <b>Title : {title}</b>\n
-        ♬ <b>Duration : {duration}</b>\n
-        ♬ <b>Link : <a href='{link}'>Click here</a></b>\n
-        ♬ <b>Requested By : {message.from_user.mention}</b>
+♬ <b>Title : {title}</b>\n
+♬ <b>Duration : {duration}</b>\n
+♬ <b>Link : <a href='{link}'>Click here</a></b>\n
+♬ <b>Requested By : {message.from_user.mention}</b>
         """
         secmul, dur, dur_arr = 1, 0, duration.split(':')
         for i in range(len(dur_arr)-1, -1, -1):
