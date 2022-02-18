@@ -87,7 +87,6 @@ def a(client, message):
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
             secmul *= 60
-        client.send_chat_action(chat_id=message.chat_id, "Sending audio")
         message.reply_audio(audio_file,
         caption=rep,
         parse_mode='HTML',
@@ -98,9 +97,9 @@ def a(client, message):
         thumb=thumb_name,
         reply_to_message_id=message.message_id
         )
-        o.delete()
+        m.delete()
     except Exception as e:
-        o.edit('There is an error while processing your request.')
+        m.edit('There is an error while processing your request.')
         print(e)
     try: 
         os.remove(audio_file)
