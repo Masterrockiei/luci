@@ -100,7 +100,7 @@ def a(client, message):
         thumb=thumb_name,
         reply_to_message_id=message.message_id
         )
-        await client.send_chat_action("Sending Audio")
+        client.send_chat_action("Sending Audio")
         o.delete()
     except Exception as e:
         p.edit('There is an error while processing your request.')
