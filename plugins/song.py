@@ -116,5 +116,6 @@ def a(client, message):
     except Exception as e:
         print(e)
         is_downloading = Flase
+        return
    
 
