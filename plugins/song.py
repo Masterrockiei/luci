@@ -102,8 +102,8 @@ async def music(client, message):
         performer=performer,
         thumb=thumb_name,
         reply_to_message_id=message.message_id
-        )
-  await message.m.delete()
+        ),
+  await m.delete()
   except Exception as e:
     await m.edit("There is an error with your download request.")
     print(e)
