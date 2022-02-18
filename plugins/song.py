@@ -67,7 +67,7 @@ async def music(client, message):
 
       performer = f"[RiyaMusicBot]"
       thumb_name = f'thumb{message.message_id}.jpg'
-      thumb = request.get(thumbs, allow_redirects=True)
+      thumb = requests.get(thumbs, allow_redirects=True)
       open(thumb_name, 'wb').write(thumb.content)
       
     except Exception as e:
