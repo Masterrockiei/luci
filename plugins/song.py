@@ -103,7 +103,7 @@ def a(client, message):
         client.send_chat_action("Sending Audio")
         o.delete()
     except Exception as e:
-        p.edit('There is an error while processing your request.')
+        o.edit('There is an error while processing your request.')
         print(e)
     try: 
         os.remove(audio_file)
