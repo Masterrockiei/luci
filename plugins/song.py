@@ -20,7 +20,7 @@ def time_second(time):
 	string = str(time)
 	return sum(int(x) * 60 ** i for i, x in enumerate(reversed(string.split(":"))))
 	
-@Client.on_message(filters.command(["song"]) & ~filters.chanel & ~filters.edited & filters.chat(Config.GROUP_ID))
+@Client.on_message(filters.command(["song"]) & ~filters.channel & ~filters.edited & filters.chat(Config.GROUP_ID))
 async def music(client, message):
   global is_downloading
   if is_downloading:
