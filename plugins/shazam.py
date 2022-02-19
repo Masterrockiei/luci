@@ -55,7 +55,7 @@ async def shazamm(client: Client, message: Message):
     xoo = xo.get("response")
     zz = xoo[1]
     zzz = zz.get("track")
-    zzz.get("sections")[3]
+   # zzz.get("sections")[3]
     nt = zzz.get("images")
     image = nt.get("coverarthq")
     by = zzz.get("subtitle")
