@@ -11,7 +11,7 @@ from pyrogram.types import USER
 async def broadcast(_, message: Message):
     sent = 0
     failed = 0
-    if message.from_user.id not in SUDO_USERS:
+    if message.from_user.id not in Config.ADMINS:
         return
     else:
         wtf = await message.reply("`Starting a broadcast...`")
@@ -19,9 +19,9 @@ async def broadcast(_, message: Message):
             await wtf.edit("Please Reply to a Message to broadcast!")
             return
         lmao = message.reply_to_message.text
-        async for dialog in Config.USER.iter_dialogs():
+        async for dialog in USER.iter_dialogs():
             try:
-                await Config.USER.send_message(dialog.chat.id, lmao)
+                await USER.send_message(dialog.chat.id, lmao)
                 sent = sent + 1
                 await wtf.edit(
                     f"`broadcasting...` \n\n**Sent to:** `{sent}` Chats \n**Failed in:** {failed} Chats"
