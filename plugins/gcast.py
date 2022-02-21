@@ -3,7 +3,7 @@ import asyncio
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-from config import Config
+from config import ADMINS
 from plugins.service.pytgcalls import client as USER
 
 
@@ -11,7 +11,7 @@ from plugins.service.pytgcalls import client as USER
 async def broadcast(_, message: Message):
     sent = 0
     failed = 0
-    if message.from_user.id not in Config.ADMINS:
+    if message.from_user.id not in ADMINS:
         return
     else:
         wtf = await message.reply("`Starting a broadcast...`")
