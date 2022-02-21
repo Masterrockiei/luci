@@ -4,7 +4,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 
 from config import Config
-from pyrogram.types import User as USER
+from plugins.services.pytgcalls import client as USER
 
 
 @Client.on_message(filters.command(["broadcast"]))
