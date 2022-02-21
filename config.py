@@ -1,7 +1,6 @@
 import os
 from os import getenv
 
-class Config(object):
   GROUP_ID = int(getenv("GROUP_ID", "-1001565165506"))
   ADMINS = [id for id in getenv("ADMINS").split(" ")]
   SESSION_NAME = getenv("RiyaMusicBot", "session")
