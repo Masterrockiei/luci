@@ -52,17 +52,3 @@ def _human_time_duration(seconds):
                          .format(amount, unit, "" if amount == 1 else "s"))
     return ', '.join(parts)
 
-# @Client.on_message(filters.text
-                   & (filters.chat(GROUP_ID) | filters.user(ADMINS))
-                   & filters.incoming
-                   & ~filters.edited
-                   & filters.regex("^uptime$"))
-async def get_uptime(_, message: Message):
-    """/uptime Reply with readable uptime and ISO 8601 start time"""
-    current_time = datetime.utcnow()
-    uptime_sec = (current_time - START_TIME).total_seconds()
-    uptime = _human_time_duration(int(uptime_sec))
-    reply = await message.reply_text(f"**Uptime:** `{uptime}`\n"
-                                     f"**Start time:** `{START_TIME_ISO}`",
-                                     quote=True)
-
