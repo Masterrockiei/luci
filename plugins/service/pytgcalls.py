@@ -3,9 +3,9 @@ from pytgcalls import PyTgCalls
 from pytgcalls.types import Update
 from pytgcalls.types.input_stream import AudioPiped
 from plugins.service import queues
-from config import Config
+from config import SESSION_NAME, API_ID, API_HASH
 
-client = Client(Config.SESSION_NAME, Config.API_ID, Config.API_HASH)
+client = Client(SESSION_NAME, API_ID, API_HASH)
 pytgcalls = PyTgCalls(client)
 
 
