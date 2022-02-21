@@ -1,11 +1,11 @@
 import os
 from pyrogram import Client
-from config import Config
+from config import API_HASH, API_ID, BOT_TOKEN
 pbot = Client(
-  Config.SESSION_NAME,
-  Config.API_HASH,
-  Config.API_ID,
-  bot_token=Config.BOT_TOKEN,
+  "RiyaMusicBot",
+  API_HASH,
+  API_ID,
+  bot_token=BOT_TOKEN,
   plugins=dict(root="plugins")
 )
 
