@@ -103,7 +103,7 @@ def a(client, message):
         thumb=thumb_name,
         reply_to_message_id=message.message_id
         ),
-        bot.send_chat_action(        
+        client.send_chat_action(        
             chat_id=update.from_user.id,
             action="typing")
         m.delete()
