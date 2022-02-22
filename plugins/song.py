@@ -103,7 +103,9 @@ def a(client, message):
         thumb=thumb_name,
         reply_to_message_id=message.message_id
         ),
-        client.SendChatAction(chat_id=message.chat_id, action=UPLOAD_AUDIO)
+        bot.send_chat_action(        
+            chat_id=update.from_user.id,
+            action="typing")
         m.delete()
     except Exception as e:
         m.edit('There is an error while processing your request.')
