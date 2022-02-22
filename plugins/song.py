@@ -94,7 +94,7 @@ def a(client, message):
             secmul *= 60
         client.send_chat_action(        
             chat_id=message.from_user.id,
-            action="sending audio"),
+            action="upload_audio"),
         message.reply_audio(
         audio_file,
         caption=rep,
