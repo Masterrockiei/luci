@@ -72,7 +72,7 @@ def a(update, message):
         except Exception as e:
             print(e)
             m.edit("Server busy due to overload, Please try again later.",
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("ᖇᗴᗩՏOᑎ", callback_data=f"err_msg({message.from_user.id})")]]))
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("ᖇᗴᗩՏOᑎ", callback_data=f"verify({message.from_user.id})")]]))
             return
     except Exception as e:
         m.edit("Use a valid command , /song song name")
@@ -109,7 +109,7 @@ def a(update, message):
     except Exception as e:
         m.edit(
           text='There is an error while processing your request.',
-          reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("ᖇᗴᗩՏOᑎ", callback_data=f"err_msg({message.from_user.id})")]]))
+          reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("ᖇᗴᗩՏOᑎ", callback_data=f"verify({message.from_user.id})")]]))
         print(e)
     try: 
         os.remove(audio_file)
