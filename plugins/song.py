@@ -119,9 +119,9 @@ def a(client, message):
 @Client.on_callback_query(filters.regex("err_msg"))
 async def error_msg(bot, query):
     if not query.from_user.id:
-      await query.reply("Sorry this isn't for you", show_alert=True)
+      await query.answer("Sorry this isn't for you", show_alert=True)
     else:
-      await query.reply("Maybe you entered a wrong song name", show_alert=True)
+      await query.answer("Maybe you entered a wrong song name", show_alert=True)
       return
     
 
