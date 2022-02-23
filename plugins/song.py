@@ -118,11 +118,10 @@ def a(client, message):
         
 @Client.on_callback_query(filters.regex("err_msg"))
 async def error_msg(message, query):
-    if message.from_user.id !== query.from_user.id:
+    if message.from_user.id not query.from_user.id:
       await query.answer("Sorry, I'm afraid that this button isn't for you", show_alert=True)
     else:
-       if message.from_user.id == query.from_user.id:
-         await query.answer("Maybe you didn't give any name please use proper request method", show_alert=True)
+      await query.answer("Maybe you didn't give any name please use proper request method", show_alert=True)
 
       
     
