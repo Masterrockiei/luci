@@ -115,8 +115,8 @@ def a(client, message):
     except Exception as e:
         print(e)
         
-  @Client.on_callback_query(filters.regex("err_msg"))
-  async def error_msg(bot, query):
+@Client.on_callback_query(filters.regex("err_msg"))
+async def error_msg(bot, query):
     if not query.from_user.id:
       await query.reply("Sorry this isn't for you", show_alert=True)
     else:
