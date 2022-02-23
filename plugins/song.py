@@ -117,14 +117,13 @@ def a(update, message):
     except Exception as e:
         print(e)
         
-@Client.on_callback_query(filters.regex(r'err_msg\(.+\)'))
-async def error_msg(message, query):
-    id = int(re.findall(r'err_msg(.+\)', query.data))
-    if id != message.from_user.id:
-      await query.answer("Sorry, I'm afraid that this button isn't for you", show_alert=True)
-    else:
-      await query.answer("Maybe you didn't give any name please use proper request method", show_alert=True)
-
+@Client.on_callback_query(filters.regex(r'verify\(.+\)'))
+async def verify():
+    id = int(re.findall(r'verify\(.+\)', update.data))
+    if id!=update.from_user.id:
+         update.answer('Sorry, I'm afraid that this button is not for you', show_alert=True)
+    else: 
+         update.answer('Please use the proper format for request a song', show_alert=True)
       
     
 
