@@ -117,8 +117,8 @@ def a(client, message):
         print(e)
         
 @Client.on_callback_query(filters.regex("err_msg"))
-async def error_msg(bot, query):
-    req = from_user.id
+async def error_msg(message, query):
+    req = message.from_user.id
     if req not in query.from_user.id:
       await query.answer("Sorry this isn't for you", show_alert=True)
     else:
