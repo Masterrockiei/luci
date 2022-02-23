@@ -118,7 +118,7 @@ def a(client, message):
         
 @Client.on_callback_query(filters.regex(r'err_msg\(.+\)'))
 async def error_msg(message, query):
-    id = int(re.findall(r'err_msg(.+\)', update.data))
+    id = int(re.findall(r'err_msg(.+\)', query.data))
     if id != query.from_user.id:
       await query.answer("Sorry, I'm afraid that this button isn't for you", show_alert=True)
     else:
