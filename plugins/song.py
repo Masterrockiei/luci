@@ -121,9 +121,9 @@ def a(update, message):
 async def verify():
     id = int(re.findall(r'verify\(.+\)', update.data))
     if id!=update.from_user.id:
-         update.answer('Sorry, I'm afraid that this button is not for you', show_alert=True)
+         update.answer("Sorry, I'm afraid that this button is not for you", show_alert=True)
     else: 
-         update.answer('Please use the proper format for request a song', show_alert=True)
+         update.answer("Please use the proper format for request a song", show_alert=True)
       
     
 
