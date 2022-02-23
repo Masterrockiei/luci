@@ -71,7 +71,7 @@ def a(client, message):
         except Exception as e:
             print(e)
             m.edit("Server busy due to overload, Please try again later.",
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("ᖇᗴᗩՏOᑎ", callback_data="err_msg")]])))
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("ᖇᗴᗩՏOᑎ", callback_data="err_msg")]]))
             return
     except Exception as e:
         m.edit("Use a valid command , /song song name")
