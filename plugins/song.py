@@ -71,7 +71,7 @@ def a(client, message):
         except Exception as e:
             print(e)
             m.edit("Server busy due to overload, Please try again later.",
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("ᖇᗴᗩՏOᑎ", callback_data="err_msg")]]))
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("ᖇᗴᗩՏOᑎ", callback_data="err_msg")]])))
             return
     except Exception as e:
         m.edit("Use a valid command , /song song name")
@@ -118,10 +118,11 @@ def a(client, message):
         
 @Client.on_callback_query(filters.regex("err_msg"))
 async def error_msg(bot, query):
-    if not query.from_user.id:
-      await query.answer("Sorry this isn't for you", show_alert=True)
+  req = query.data.split("_")
+    if int(req) not in [query.from_user.id, 0]:
+      await query.reply("Sorry this isn't for you", show_alert=True)
     else:
-      await query.answer("Maybe you entered a wrong song name", show_alert=True)
+      await query.reply("Maybe you entered a wrong song name", show_alert=True)
       return
     
 
