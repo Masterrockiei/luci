@@ -109,7 +109,7 @@ def a(update, message):
     except Exception as e:
         m.edit(
           text='There is an error while processing your request.',
-          reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("ᖇᗴᗩՏOᑎ", callback_data=f"verify({update..from_user.id})")]]))
+          reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("ᖇᗴᗩՏOᑎ", callback_data=f"verify({update.from_user.id})")]]))
         print(e)
     try: 
         os.remove(audio_file)
