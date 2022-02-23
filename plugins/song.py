@@ -120,8 +120,10 @@ def a(client, message):
 async def error_msg(message, query):
     if query.from_user.id:
       return await query.answer("Sorry this isn't for you", show_alert=True)
-    if not query.from_user.id:
+    elif not query.from_user.id:
       return await query.answer("Maybe you entered a wrong song name", show_alert=True)
+    else:
+      return
       
     
 
