@@ -21,7 +21,7 @@ def time_to_seconds(time):
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
 
 @Client.on_message(filters.command(["song"]) & ~filters.channel & ~filters.edited & filters.chat(GROUP_ID))
-def a(client, message):
+def a(update, message):
     query = ''
     for i in message.command[1:]:
         query += ' ' + str(i)
@@ -71,7 +71,7 @@ def a(client, message):
         except Exception as e:
             print(e)
             m.edit("Server busy due to overload, Please try again later.",
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("ᖇᗴᗩՏOᑎ", callback_data=f"err_msg({query.from_user.id})")]]))
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("ᖇᗴᗩՏOᑎ", callback_data=f"err_msg({update.from_user.id})")]]))
             return
     except Exception as e:
         m.edit("Use a valid command , /song song name")
@@ -108,7 +108,7 @@ def a(client, message):
     except Exception as e:
         m.edit(
           text='There is an error while processing your request.',
-          reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("ᖇᗴᗩՏOᑎ", callback_data=f"err_msg({query.from_user.id})")]]))
+          reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("ᖇᗴᗩՏOᑎ", callback_data=f"err_msg({update.from_user.id})")]]))
         print(e)
     try: 
         os.remove(audio_file)
@@ -117,9 +117,9 @@ def a(client, message):
         print(e)
         
 @Client.on_callback_query(filters.regex(r'err_msg\(.+\)'))
-async def error_msg(message, query):
-    id = int(re.findall(r'err_msg(.+\)', query.data))
-    if id != query.from_user.id:
+async def error_msg(update, query):
+    id = int(re.findall(r'err_msg(.+\)', update.data))
+    if id != update.from_user.id:
       await query.answer("Sorry, I'm afraid that this button isn't for you", show_alert=True)
     else:
       await query.answer("Maybe you didn't give any name please use proper request method", show_alert=True)
