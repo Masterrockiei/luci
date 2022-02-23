@@ -105,7 +105,9 @@ def a(client, message):
         )
         m.delete()
     except Exception as e:
-        m.edit('There is an error while processing your request.')
+        m.edit(
+          text='There is an error while processing your request.',
+          reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("ᖇᗴᗩՏOᑎ", callback_data="err_msg")]]))
         print(e)
     try: 
         os.remove(audio_file)
@@ -113,5 +115,12 @@ def a(client, message):
     except Exception as e:
         print(e)
         
-   
+  @Client.on_callback_query(filters.regex("err_msg"))
+  async def error_msg(bot, query):
+    if not query.from_user.id:
+      await query.reply("Sorry this isn't for you", show_alert=True)
+    else:
+      await query.reply("Maybe you entered a wrong song name", show_alert=True)
+      return
+    
 
