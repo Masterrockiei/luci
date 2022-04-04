@@ -41,7 +41,7 @@ def a(update, message):
                 "preferredquality": "320",
             }
         ],
-        "outtmpl": "downloads/%(track)s.mp3" ,
+        "outtmpl": "downloads/%(track).mp3" ,
     }
     try:
         results = []
@@ -60,9 +60,10 @@ def a(update, message):
             duration = results[0]["duration"]
             views = results[0]["views"]
 
-            if time_to_seconds(duration) >= 1800:  # duration limit
-                 m.edit("Exceeded 30mins cap")
-                 return
+            if time_to_seconds(duration) >= 3200:  # duration limit
+                 m.edit("Maximum download limit 30mins")
+                 await asyncio.sleep(60)
+                 await m.delete()
 
             performer = f"[Riya Music Bot]" 
             thumb_name = f'thumb{message.message_id}.jpg'
