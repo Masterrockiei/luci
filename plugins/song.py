@@ -62,8 +62,8 @@ def a(update, message):
 
             if time_to_seconds(duration) >= 3200:  # duration limit
                  m.edit("Maximum download limit 30mins")
-                 await asyncio.sleep(60)
-                 await m.delete()
+                 asyncio.sleep(60)
+                 m.delete()
 
             performer = f"[Riya Music Bot]" 
             thumb_name = f'thumb{message.message_id}.jpg'
