@@ -94,27 +94,16 @@ def a(update, message):
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
             secmul *= 60
-            
-        if message.chat.id == message.from_user.id:
          message.reply_audio(
-         audio_file,
-         caption=rep,
-         parse_mode='HTML',
-         quote=False,
-         title=title,
-         duration=dur,
-         performer=performer,
-         thumb=thumb_name,
-         reply_to_message_id=message.message_id
-        else:
-          hh=await SendCachedMedia(
-            chat.id=message.chat.id,
-            file_id=file_id,
-            reply_markup=InlineKeyboardMarkup(
-                         [[
-                           InlineKeyboardButton("Send Personally", callback_data=f"{hh}")
-                           ]]), 
-        )
+          audio_file,
+          caption=rep,
+          parse_mode='HTML',
+          quote=False,
+          title=title,
+          duration=dur,
+          performer=performer,
+          thumb=thumb_name,
+          reply_to_message_id=message.message_id)
         m.delete()
     except Exception as e:
         m.edit(
