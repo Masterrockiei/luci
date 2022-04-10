@@ -9,7 +9,7 @@ import aiofiles
 import aiohttp
 import wget
 from pyrogram import Client, filters
-from config import GROUP_ID
+from config import GROUP_ID, ADMINS
 from pyrogram.errors import FloodWait, MessageNotModified
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 from youtubesearchpython import SearchVideos
@@ -78,7 +78,7 @@ def a(update, message):
         m.edit("Use a valid command , /song song name")
         print(str(e))
         return
-    m.edit("**⬆️ Uploading**")
+    m.edit("**Uploading⬆️**")
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
@@ -94,16 +94,26 @@ def a(update, message):
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
             secmul *= 60
-        message.reply_audio(
-        audio_file,
-        caption=rep,
-        parse_mode='HTML',
-        quote=False,
-        title=title,
-        duration=dur,
-        performer=performer,
-        thumb=thumb_name,
-        reply_to_message_id=message.message_id
+            
+        if message.chat.id == message.from_user.id:
+         message.reply_audio(
+         audio_file,
+         caption=rep,
+         parse_mode='HTML',
+         quote=False,
+         title=title,
+         duration=dur,
+         performer=performer,
+         thumb=thumb_name,
+         reply_to_message_id=message.message_id
+        else:
+          hh=await SendCachedMedia(
+            chat.id=message.chat.id,
+            file_id=file_id,
+            reply_markup=InlineKeyboardMarkup(
+                         [[
+                           InlineKeyboardButton("Send Personally", callback_data=f"{hh}")
+                           ]]), 
         )
         m.delete()
     except Exception as e:
@@ -116,13 +126,3 @@ def a(update, message):
     except Exception as e:
         print(e)
         
-@Client.on_callback_query(filters.regex(r'verify\(.+\)'))
-async def verify():
-    id = int(re.findall(r'verify\(.+\)', update.data))
-    if id!=update.from_user.id:
-         update.answer("Sorry, I'm afraid that this button is not for you", show_alert=True)
-    else: 
-         update.answer("Please use the proper format for request a song", show_alert=True)
-      
-    
-
