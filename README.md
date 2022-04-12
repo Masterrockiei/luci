@@ -11,8 +11,8 @@
 * `GROUP_ID` - To use the bot personally
 
 <h2> Features 🔥 </h2>
-- Fastest Song Download Codes
-- Find Songs if you don't even know its name
+* Fastest Song Download Codes
+* Find Songs if you don't even know its name
 
 ## 🚀 Deployment
 
