@@ -8,7 +8,7 @@ from pyrogram.types import Message, User
 @Client.on_message(filters.new_chat_members)
 async def welcome(bot,message):
 	chatid= message.chat.id
-	m=await bot.send_message(text=f"Welcome {message.from_user.mention} to Kerala Music Hub ,  Happy to see you here",chat_id=chatid)
+	m=await bot.send_message(text=f"Welcome {message.from_user.mention} to {message.chat.title},  Happy to see you here",chat_id=chatid)
 	await asyncio.sleep(6)
 	await m.delete()
    
