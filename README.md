@@ -28,7 +28,7 @@
 ## Copyright & License 👮
 
  - Copyright (C) 2022-present by [Samin Sumesh](github.com/saminsumesh) ❤️️
- - Licensed under the terms of the [MIT License](https://github.com/SaminSumesh/MusicBot/LICENSE)
+ - Licensed under the terms of the [MIT License](https://github.com/saminsumesh/MusicBot/blob/main/LICENSE)
     
 This is a Free Software: You can use, study share and improve it at your will. Specifically you can redistribute and/or modify it under the terms of the MIT License as published by the Free Software Foundation.    
 ## Made with ♥️ by [Samin Sumesh](https://t.me/SaminSumesh)
