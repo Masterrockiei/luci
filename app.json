@@ -1,0 +1,48 @@
+{
+    "name": "MusicBot",
+    "description": "Music Bot",
+    "keywords": [
+        "MusicBot",
+        "Telegrambot",
+        "ShazamBot",
+        "PyrogramMusicBot"
+    ],
+    "repository": "https://github.com/saminsumesh/MusicBot",
+    "website": "https://t.me/SaminSumesh",
+    "success_url": "https://github.com/saminsumesh/MusicBot",
+    "env": {
+        "API_ID": {
+            "description": "Your api_id get it from https",
+            "required": "True",
+            "value": "//my.telegram.org",
+            "generator": "secret"
+        },
+        "API_HASH": {
+            "description": "Your api_hash get it from https",
+            "required": "True",
+            "value": "//my.telegram.org",
+            "generator": "secret"
+        },
+        "BOT_TOKEN": {
+            "description": "Get it from @Botfather",
+            "required": "True"
+        },
+        "ADMINS": {
+            "description": "Your Telegram ID",
+            "required": "True",
+            "value": "198625479"
+        },
+        "GROUP_ID": {
+            "description": "Your Group ID Where the bot should work",
+            "required": "True",
+            "value": "-100002794"
+        }
+    },
+    "stack": "heroku-20",
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
+    }
+}
