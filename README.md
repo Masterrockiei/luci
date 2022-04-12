@@ -1,4 +1,6 @@
-# The Perfect Music Bot With Those Features You Wanted
+<h1 align="center">MUSIC BOT V2.0 🎵</h1>
+
+## The Perfect Music Bot With Those Features You Wanted
 
 ## Variables
 
@@ -8,7 +10,14 @@
 * `ADMINS` - Your Telegram ID
 * `GROUP_ID` - To use the bot personally
 
-## Deploy
+<h2> Features 🔥 </h2>
+- Fastest Song Download Codes
+- Find Songs if you don't even know its name
+
+## 🚀 Deployment
+
+## 💜 Heroku
+
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/saminsumesh/musicbot)
 
 ## Credits ❤️
