@@ -36,7 +36,7 @@ async def shazamm(client: Client, message: Message):
         return
     if os.path.exists("riya.mp3"):
         os.remove("riya.mp3")
-    kek = await fetch_audio(client, message)
+    kkk = await fetch_audio(client, message)
     downloaded_file_name = kkk
     f = {"file": (downloaded_file_name, open(downloaded_file_name, "rb"))}
     await kek.edit("**🎵 Analysing**")
@@ -65,7 +65,7 @@ async def shazamm(client: Client, message: Message):
 <b>Song By : </b>{by}
 <u><b>Identified by @RiyaMusicBot</u></b>
 """
-    kek = await message.reply_text("**@RiyaMusicBot is Shazaming ⚡**")
+    kk = await message.reply_text("**@RiyaMusicBot is Shazaming ⚡**")
     os.remove(downloaded_file_name)
     await kek.delete()
 
