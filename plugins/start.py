@@ -25,7 +25,7 @@ async def start(bot, message):
   n=await m.edit("◈◈◇")
   p=await n.edit("◈◈◈")
   await p.edit(
-    text=f"**Hey {message.from_user.mention} 🌺, I'm An Advanced Music Bot and A Song Recognise Bot, I'm Only Made For Kerala Beats**\n\n**Bot Uptime : {uptime}**",
+    text=f"**Hey {message.from_user.mention} , I'm An Advanced Music Bot and A Song Recognise Bot, I'm Only Made For Melody Cafe**\n\n**Bot Uptime : {uptime}**",
     reply_markup=InlineKeyboardMarkup(
       [[
         InlineKeyboardButton("♬ Group", url="https://t.me/KeralaMusicHubRedirect"),
