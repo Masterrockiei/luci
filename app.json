@@ -8,8 +8,8 @@
         "PyrogramMusicBot"
     ],
     "repository": "https://github.com/Masterrockiei/luci",
-    "website": "https://t.me/SaminSumesh",
-    "success_url": "https://github.com/saminsumesh/MusicBot",
+    "website": "https://github.com/Masterrockiei",
+    "success_url": "https://github.com/Masterrockiei/luci",
     "env": {
         "API_ID": {
             "description": "Your api_id get it from https",
