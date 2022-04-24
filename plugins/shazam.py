@@ -63,7 +63,7 @@ async def shazamm(client: Client, message: Message):
     text = f"""<b>Song Shazamed.</b>
 <b>Song Name : </b>{title}
 <b>Song By : </b>{by}
-<u><b>Identified by @RiyaMusicBot</u></b>
+<u><b>Identified by @sophiemusicbot</u></b>
 """
     kk = await message.reply_text("**@RiyaMusicBot is Shazaming ⚡**")
     os.remove(downloaded_file_name)
