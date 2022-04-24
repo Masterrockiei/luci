@@ -19,7 +19,7 @@
 
 ## 💜 Heroku
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/saminsumesh/musicbot)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Masterrockiei/luci)
 
 ## Credits ❤️
 * [Me](https://t.me/PaulWalker_TG) for nothing ❤️
