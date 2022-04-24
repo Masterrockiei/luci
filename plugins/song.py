@@ -75,7 +75,7 @@ def a(update, message):
             m.edit("Server busy due to overload, Please try again later.")
             return
     except Exception as e:
-        m.edit("Use a valid command , /song song name")
+        m.edit("Use a valid command , song name")
         print(str(e))
         return
     m.edit("**Uploading⬆️**")
