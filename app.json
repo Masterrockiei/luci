@@ -7,7 +7,7 @@
         "ShazamBot",
         "PyrogramMusicBot"
     ],
-    "repository": "https://github.com/saminsumesh/MusicBot",
+    "repository": "https://github.com/Masterrockiei/luci",
     "website": "https://t.me/SaminSumesh",
     "success_url": "https://github.com/saminsumesh/MusicBot",
     "env": {
@@ -30,7 +30,7 @@
         "ADMINS": {
             "description": "Your Telegram ID",
             "required": "True",
-            "value": "198625479"
+            "value": "1342641151"
         },
         "GROUP_ID": {
             "description": "Your Group ID Where the bot should work",
