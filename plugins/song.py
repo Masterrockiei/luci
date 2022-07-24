@@ -21,7 +21,7 @@ def time_to_seconds(time):
     stringt = str(time)
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
 
-@Client.on_message(filters.command(["song"]) & ~filters.channel & ~filters.edited & filters.chat(GROUP_ID))
+@Client.on_message(filters.command(["song"]) & ~filters.channel & ~filters.edited)
 def a(update, message):
     query = ''
     for i in message.command[1:]:
